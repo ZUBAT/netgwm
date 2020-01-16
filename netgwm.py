@@ -47,10 +47,10 @@ def main():
     if not os.path.isfile(options.config):
       parser.error('Config file (%s) not found.' % options.config)
 
-    config = yaml.load(open(options.config, 'r'))
+    config = yaml.load(open(options.config, 'r'),Loader=yaml.FullLoader)
     if not os.path.exists('/var/run/netgwm/'): os.mkdir('/var/run/netgwm/')
 
-    try:    gwstore = yaml.load(open(gwstorefile, 'r'))
+    try:    gwstore = yaml.load(open(gwstorefile, 'r'),Loader=yaml.FullLoader)
     except: gwstore = {}
 
     gateways = []
